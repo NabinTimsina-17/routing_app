@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -68,7 +70,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           controller: _pageController,
           itemCount: onBoardingList.length,
           onPageChanged: (newPage) {
-            _currentpage = newPage;
+            setState(() {
+                          _currentpage = newPage;
+            });
           },
           itemBuilder: (BuildContext context, int index) {
             return onBoardingList[index];
@@ -86,17 +90,20 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               ],
             ),
             Row(
+              
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                  InkWell(child: const Icon(Icons.arrow_back_ios,),onTap: () {
-                  _pageController.animateToPage(2, duration: const Duration(milliseconds: 500), curve: Curves.linear);
+                  _pageController.animateToPage(
+                    decreasePageNumber(_currentpage), duration: const Duration(milliseconds: 500), curve: Curves.linear);
                 },
                 ),
-                for (int i = 0; i == onBoardingList.length; i++)
+                for (int i = 0; i < onBoardingList.length; i++)
                   getproperbutton(i, _currentpage),
                 InkWell(child: const Icon(Icons.arrow_forward_ios),
                 onTap: () {
-                  _pageController.animateToPage(1, duration: const Duration(milliseconds: 500) , curve: Curves.linear);
+                  _pageController.animateToPage(
+                    increasePageNumber(_currentpage), duration: const Duration(milliseconds: 500) , curve: Curves.linear);
                 },),
               ],
             ),
@@ -106,22 +113,40 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     );
   }
 
-  getproperbutton(int i, int currentpage) {
-    if (i == currentpage) {
+ Widget getproperbutton(int index, int currentpage) {
+    if (index == currentpage) {
       return Padding(
         padding: const EdgeInsets.all(8),
-        child: SvgPicture.asset(
-            'assets/images/circleSolidBottomAppbarBoarding.svg',
-            height: 20),
+        child: Image.asset(
+          'assets/images/hollow.png',
+          height: 20,
+        ),
       );
     } else {
       return Padding(
         padding: const EdgeInsets.all(8.0),
-        child: SvgPicture.asset(
-          'assets/images/circleHollowBottomAppbarBoarding.svg',
+        child: Image.asset(
+          'assets/images/filled.png',
           height: 20,
         ),
       );
     }
+  }
+  
+  int decreasePageNumber(int currentpage) {
+     --currentpage;
+     if(currentpage<0){
+      return onBoardingList.length-1;
+
+     }
+     return currentpage;
+  }
+  
+  int increasePageNumber(int currentpage) {
+    ++currentpage;
+    if(currentpage==onBoardingList.length){
+      return 0;
+    }
+    return currentpage;
   }
 }
