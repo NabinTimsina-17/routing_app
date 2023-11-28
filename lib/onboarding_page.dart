@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -58,6 +56,11 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         description:
             'Tut app is an awesome flutter application using clean architecture #3',
         imagePath: 'assets/images/onboardingimg3.svg'),
+    const OnBoarding(
+        title: 'SEE THE BEST COURSE',
+        description:
+            'Tut app is an awesome flutter application using clean architecture #4',
+        imagePath: 'assets/images/onboardingimag4.svg'),
   ];
 
   // ignore: prefer_final_fields
@@ -118,7 +121,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       return Padding(
         padding: const EdgeInsets.all(8),
         child: Image.asset(
-          'assets/images/hollow.png',
+          'assets/images/filled.png',
+      
           height: 20,
         ),
       );
@@ -126,7 +130,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       return Padding(
         padding: const EdgeInsets.all(8.0),
         child: Image.asset(
-          'assets/images/filled.png',
+          'assets/images/hollow.png',
           height: 20,
         ),
       );

@@ -67,6 +67,7 @@ flutter:
     - assets/images/onboardingimg1.svg
     - assets/images/onboardingimg2.svg
     - assets/images/onboardingimg3.svg
+    - assets/images/onboardingimag4.svg
     - assets/images/circleHollowBottomAppbarBoarding.svg
     - assets/images/circleSolidBottomAppbarBoarding.svg
 
