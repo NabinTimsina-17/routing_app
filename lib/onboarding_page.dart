@@ -8,6 +8,8 @@ class OnBoarding extends StatelessWidget {
 
   const OnBoarding(
       {super.key,
+
+      
       required this.title,
       required this.description,
       required this.imagePath});
